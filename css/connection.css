@@ -1,0 +1,419 @@
+/* Base Styles */
+:root {
+    --primary-color: #4f46e5;
+    --primary-light: #818cf8;
+    --primary-dark: #4338ca;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+    --glass-blur: blur(10px);
+    --transition: all 0.3s ease;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background Animation */
+body::before {
+    content: '';
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, #f0f9ff 0%, #e0f2fe 50%, #f0f9ff 100%);
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Section Styles */
+section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+}
+
+/* Credentials Screen */
+.credentials-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: var(--glass-shadow);
+    margin: 2rem auto;
+}
+
+.credentials-card h2 {
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    transition: var(--transition);
+}
+
+.input-group label {
+    position: absolute;
+    left: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    transition: var(--transition);
+    pointer-events: none;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.input-group input:focus,
+.input-group input:valid {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+    top: 0;
+    left: 1rem;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    background: white;
+    padding: 0 0.5rem;
+}
+
+.test-connect-btn {
+    width: 100%;
+    padding: clamp(0.8rem, 2vw, 1rem);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition);
+}
+
+.test-connect-btn:hover {
+    background: var(--primary-light);
+    transform: scale(1.02);
+}
+
+.spinner {
+    width: clamp(16px, 3vw, 20px);
+    height: clamp(16px, 3vw, 20px);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}
+
+/* Connection Form */
+.connection-form {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: 24px;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto 4rem;
+    box-shadow: var(--glass-shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.form-group input {
+    width: 100%;
+    padding: clamp(0.6rem, 2vw, 0.75rem) 1rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text-primary);
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    transition: var(--transition);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.form-group input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.connect-button {
+    width: 100%;
+    padding: clamp(0.8rem, 2vw, 1rem);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.connect-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.connect-button:active {
+    transform: translateY(0);
+}
+
+/* Connection Section */
+.connection-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 3vw, 2rem);
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .credentials-card,
+    .connection-form {
+        max-width: 90%;
+        margin: 1.5rem auto;
+    }
+}
+
+@media (max-width: 768px) {
+    section {
+        padding: 1rem;
+    }
+
+    .credentials-card,
+    .connection-form {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+
+    .input-group input,
+    .form-group input {
+        padding: 0.8rem 1rem 0.8rem 2.5rem;
+    }
+
+    .input-group i {
+        left: 0.8rem;
+    }
+
+    .input-group label {
+        left: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .credentials-card,
+    .connection-form {
+        padding: 1.2rem;
+        border-radius: 16px;
+    }
+
+    .input-group input,
+    .form-group input {
+        padding: 0.7rem 0.8rem 0.7rem 2.2rem;
+        font-size: 0.9rem;
+    }
+
+    .input-group i {
+        left: 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .input-group label {
+        left: 2.2rem;
+        font-size: 0.9rem;
+    }
+
+    .test-connect-btn,
+    .connect-button {
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape Mode */
+@media (max-height: 600px) and (orientation: landscape) {
+    section {
+        min-height: auto;
+        padding: 1rem;
+    }
+
+    .credentials-card,
+    .connection-form {
+        margin: 1rem auto;
+    }
+
+    .input-group {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-left: 6px solid #4f46e5;
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    z-index: 1000;
+}
+
+.toast.active {
+    transform: translateX(0%);
+}
+
+.toast .toast-content {
+    display: flex;
+    align-items: center;
+}
+
+.toast-content i {
+    font-size: 25px;
+    color: #4f46e5;
+}
+
+.toast-content .message {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+.message .text {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666666;
+}
+
+.message .text.text-1 {
+    font-weight: 600;
+    color: #333;
+}
+
+.toast .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.toast .close:hover {
+    opacity: 1;
+}
+
+.toast .progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+}
+
+.toast .progress:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4f46e5;
+}
+
+.toast.active .progress:before {
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        right: 100%;
+    }
+} 

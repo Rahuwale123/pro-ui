@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Database Visualizer - Connection</title>
+    <link rel="stylesheet" href="css/connection.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <section id="credentials-screen">
+        <div class="credentials-card">
+            <h2>Database Connection</h2>
+            <form id="db-credentials-form">
+                <div class="input-group">
+                    <i class="ri-server-line"></i>
+                    <input type="text" id="hostname" required>
+                    <label for="hostname">Hostname</label>
+                </div>
+                <div class="input-group">
+                    <i class="ri-router-line"></i>
+                    <input type="text" id="port" value="3306" required>
+                    <label for="port">Port</label>
+                </div>
+                <div class="input-group">
+                    <i class="ri-user-line"></i>
+                    <input type="text" id="username" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-group">
+                    <i class="ri-lock-line"></i>
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-group">
+                    <i class="ri-database-2-line"></i>
+                    <input type="text" id="dbname" required>
+                    <label for="dbname">Database Name</label>
+                </div>
+                <button type="submit" class="test-connect-btn">
+                    <span>Test & Connect</span>
+                    <div class="spinner hidden"></div>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="ri-checkbox-circle-line"></i>
+            <div class="message">
+                <span class="text text-1">Success</span>
+                <span class="text text-2">Database connected successfully!</span>
+            </div>
+        </div>
+        <i class="ri-close-line close"></i>
+        <div class="progress"></div>
+    </div>
+
+    <script src="js/connection.js"></script>
+</body>
+</html> 

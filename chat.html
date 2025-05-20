@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Database Visualizer - Chat</title>
+    <link rel="stylesheet" href="css/chat.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-screen">
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            <div class="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Ask your data...">
+                <button id="send-message">
+                    <i class="ri-send-plane-fill"></i>
+                </button>
+            </div>
+        </div>
+        <div class="visualization-panel">
+            <div class="visualization-placeholder">
+                <i class="ri-bar-chart-box-line"></i>
+                <p>Ask me something about your data and I'll turn it into a chart!</p>
+            </div>
+            <div class="chart-container hidden">
+                <div class="chart-header">
+                    <h3 id="chart-title">Chart Title</h3>
+                </div>
+                <div id="chart-area"></div>
+                <button class="download-chart">
+                    <i class="ri-download-line"></i>
+                    Download Chart
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html> 
