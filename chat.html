@@ -38,6 +38,26 @@
             </div>
         </div>
     </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAenq4I1zWCNIkcqBhL8b1ZJzUw2gDGC1g",
+            authDomain: "proai-7d67b.firebaseapp.com",
+            projectId: "proai-7d67b",
+            storageBucket: "proai-7d67b.firebasestorage.app",
+            messagingSenderId: "301351929679",
+            appId: "1:301351929679:web:be6b678170989ca71d273a"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/chat.js"></script>
 </body>

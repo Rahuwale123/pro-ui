@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Database Visualizer - Authentication</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <div class="auth-header">
+                <h1>Welcome Back</h1>
+                <p>Sign in to continue to AI Database Visualizer</p>
+            </div>
+            
+            <div class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input">
+                        <input type="password" id="password" placeholder="Enter your password">
+                        <i class="ri-eye-off-line" id="togglePassword"></i>
+                    </div>
+                </div>
+
+                <div class="form-group" id="confirmPasswordGroup" style="display: none;">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="password-input">
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                        <i class="ri-eye-off-line" id="toggleConfirmPassword"></i>
+                    </div>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+
+                <button id="submitBtn" class="auth-button">
+                    <span>Sign In</span>
+                    <div class="spinner"></div>
+                </button>
+                
+                <div class="auth-switch">
+                    <p id="switchText">Don't have an account?</p>
+                    <button id="switchMode">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    
+    <!-- Firebase Configuration -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAenq4I1zWCNIkcqBhL8b1ZJzUw2gDGC1g",
+            authDomain: "proai-7d67b.firebaseapp.com",
+            projectId: "proai-7d67b",
+            storageBucket: "proai-7d67b.firebasestorage.app",
+            messagingSenderId: "301351929679",
+            appId: "1:301351929679:web:be6b678170989ca71d273a"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    
+    <!-- Custom JS -->
+    <script src="js/auth.js"></script>
+</body>
+</html> 

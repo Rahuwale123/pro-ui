@@ -3,6 +3,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const toast = document.getElementById('toast');
     const closeIcon = toast.querySelector('.close');
     
+    // Check if user is authenticated and has existing connection
+    firebase.auth().onAuthStateChanged(async (user) => {
+        if (!user) {
+            // Redirect to auth page if not authenticated
+            window.location.href = 'auth.html';
+            return;
+        }
+
+        try {
+            // Check for existing connection
+            const response = await fetch('http://127.0.0.1:8000/check-connection', {
+                method: 'POST',
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    connection_id: user.uid
+                })
+            });
+
+            const data = await response.json();
+            if (data.has_connection === true) {
+                // Store connection details in localStorage
+                localStorage.setItem('dbConnection', JSON.stringify(data.connection));
+                // If connection exists, redirect to chat
+                window.location.href = 'chat.html';
+                return;
+            }
+        } catch (error) {
+            console.error('Error checking connection:', error);
+            // Continue showing connection form if there's an error
+        }
+    });
+
     // Initialize floating labels
     document.querySelectorAll('.input-group input').forEach(input => {
         if (input.value) {
@@ -55,6 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const database = document.getElementById('dbname').value;
 
         try {
+            // Get current user
+            const user = firebase.auth().currentUser;
+            if (!user) {
+                throw new Error('User not authenticated');
+            }
+
             const response = await fetch('http://127.0.0.1:8000/connect-database', {
                 method: 'POST',
                 headers: {
@@ -66,7 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     port: parseInt(port),
                     username: username,
                     password: password,
-                    database: database
+                    database: database,
+                    connection_id: user.uid
                 })
             });
 
@@ -78,7 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     hostname,
                     port,
                     username,
-                    database
+                    database,
+                    connection_id: user.uid
                 }));
                 
                 // Show success toast

@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.auth-box {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-header h1 {
+    color: #1F2937;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4F46E5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.password-input {
+    position: relative;
+}
+
+.password-input i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.password-input i:hover {
+    color: #4F46E5;
+}
+
+.error-message {
+    color: #DC2626;
+    font-size: 14px;
+    margin-bottom: 16px;
+    min-height: 20px;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    background: #4F46E5;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.auth-button:hover {
+    background: #4338CA;
+}
+
+.auth-button.loading {
+    background: #4338CA;
+    cursor: not-allowed;
+}
+
+.auth-button.loading span {
+    visibility: hidden;
+}
+
+.auth-button .spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+    position: absolute;
+}
+
+.auth-button.loading .spinner {
+    display: block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.auth-switch {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-switch p {
+    color: #6B7280;
+    margin-bottom: 8px;
+}
+
+.auth-switch button {
+    background: none;
+    border: none;
+    color: #4F46E5;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.auth-switch button:hover {
+    color: #4338CA;
+    text-decoration: underline;
+}
+
+/* Fade Animation for Form */
+.auth-form {
+    transition: opacity 0.3s ease;
+}
+
+.auth-form.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Shake Animation for Error */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-message.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Button Hover Effect */
+.auth-button:not(.loading):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
+}
+
+.auth-button:not(.loading):active {
+    transform: translateY(0);
+}
+
+/* Input Focus Animation */
+.form-group input {
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    transform: translateY(-1px);
+}
+
+/* Success Animation */
+@keyframes success {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.auth-box.success {
+    animation: success 0.5s ease-in-out;
+} 
